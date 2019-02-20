@@ -9,7 +9,7 @@ type AccountService struct {
 
 // Info retrieves user account information.
 func (a *AccountService) Info(ctx context.Context) (AccountInfo, error) {
-	req, err := a.client.NewRequest(ctx, "GET", "/v2/account/info", nil)
+	req, err := a.client.NewRequest(ctx, "GET", "/v2/account/info" + "?oauth_token=" + os.Getenv("OAUTH_TOKEN"), nil)
 	if err != nil {
 		return AccountInfo{}, nil
 	}
